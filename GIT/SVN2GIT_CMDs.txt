@@ -33,4 +33,4 @@ synchronize				[there's nothing simple like SVN's synchronize]
 						[check the changes made locally]
 						git status
 						
-						
+some other command				
