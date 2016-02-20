@@ -34,5 +34,12 @@ synchronize				[here's the closest to SVN's synchronize]
 						// pushes committed changes from local to remote
 						git push origin master (indicates remote name and branch to commit to)
 												 			
+ignore file				[create ignore file and add to it]
+						create file .gitignore on root repository folder (same level as .git)
+						add *.class to the file contents (first line)
+						commit and push the file (so others cloning this repository will get this ignore file as well)
+						
+						[if files were already loaded into the repository - for instance, .class files - need to manually stop tracking them]
+						git rm -r --cached <filename or format, for instance *.class>
 						
 		
