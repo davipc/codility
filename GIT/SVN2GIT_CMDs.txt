@@ -21,4 +21,6 @@ commit					git add <filenames>, then
 revert					when not committed yet => git checkout <filenames>
 (overwrite local)		when already committed => git checkout HEAD <filenames>
 
-update					git fetch origin (indicates remote name from which to fetch)
+update					git pull origin master (indicates remote name from which to fetch)
+
+synchronize								
