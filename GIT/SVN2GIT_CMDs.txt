@@ -24,3 +24,5 @@ revert					when not committed yet => git checkout <filenames>
 update					git pull origin master (indicates remote name from which to fetch)
 
 synchronize								
+
+some other command
