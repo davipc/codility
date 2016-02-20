@@ -26,6 +26,7 @@ update					git pull origin master (indicates remote name from which to fetch)
 synchronize				[there's nothing simple like SVN's synchronize]
 						[fetch the changes from the remote]
 						git fetch origin
+						git log --oneline master..origin/master
 						git checkout origin/master (this will change your source to what's in head)
 						[visually check the changes made]
 						git checkout master
@@ -33,4 +34,4 @@ synchronize				[there's nothing simple like SVN's synchronize]
 						[check the changes made locally]
 						git status
 						
-some other command				
+		
