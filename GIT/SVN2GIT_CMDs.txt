@@ -1,0 +1,24 @@
+This list contains the mapping from SVN to GIT commands
+
+
+SVN						GIT
+--------------------------------------------------------------
+checkout				git clone <url> [new dir name]
+
+share					(on github) create new repository for the project, then get it's URL (click on "Copy to clipboard" button beside HTTPS URL - example: https://github.com/davipc/codility.git)
+						(from inside dir) git init
+						git add .
+						git commit -m "first version"
+						git remote add origin <remote URL>
+						 
+list uncommitted		git status 
+changes
+
+commit					git add <filenames>, then
+						git commit -m "<commit msgs>", then
+						git push origin master (indicates remote name and branch to commit to)
+						 
+revert					when not committed yet => git checkout <filenames>
+(overwrite local)		when already committed => git checkout HEAD <filenames>
+
+update					git fetch origin (indicates remote name from which to fetch)
