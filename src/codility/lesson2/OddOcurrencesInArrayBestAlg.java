@@ -40,24 +40,21 @@ expected worst-case time complexity is O(N);
 expected worst-case space complexity is O(1), beyond input storage (not counting the storage required for input arguments).
 Elements of input arrays can be modified.
  * 
+ * The best solution makes use of an int to keep track of numbers already marked (or unmarking if already seen)
+ * 
  * @author Davi
  *
  */
 
-public class OddOcurrencesInArray {
+public class OddOcurrencesInArrayBestAlg {
 	
     public int solution(int[] A) {
         int result = 0;
         
         String arrayStr = Arrays.toString(A);
         
-        Arrays.sort(A);
-        
-        for (int i = 0; i < A.length; i+=2) {
-        	if (i == A.length-1 || A[i] != A[i+1]) {
-        		result = A[i];
-        		break;
-        	}
+        for (int i = 0; i < A.length; i++) {
+        	result ^= A[i];
         }
         
         System.out.println(arrayStr + " => " + result);
@@ -66,7 +63,7 @@ public class OddOcurrencesInArray {
     }
 
 	public static void main(String[] args) {
-		OddOcurrencesInArray cr = new OddOcurrencesInArray();
+		OddOcurrencesInArrayBestAlg cr = new OddOcurrencesInArrayBestAlg();
 		cr.solution(new int[]{1});    
 		cr.solution(new int[]{1,2,1});    
 		cr.solution(new int[]{1,2,1,2,3});    

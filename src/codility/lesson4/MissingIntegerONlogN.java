@@ -34,35 +34,46 @@ Elements of input arrays can be modified.
  * @author Davi
  *
  */
-public class MissingInteger {
+public class MissingIntegerONlogN {
 	public int solution(int[] A) {
 		int result = -1;
 
-		int N = A.length;
-		
 		String arrayStr = Arrays.toString(A);
-
-		boolean[] found = new boolean[N+1];
 		
-		// an array of size N should be enough... if there are any gaps, it's the gap. 
-		// If not, the first missing number is N+1 (since the array can only take N elements)
-		for (int a: A) {
-			// only consider positive numbers up to N - all other numbers in A will not be needed for the solution  
-			if (a > 0 && a <= N)
-				found[a] = true;
-		}
-		
+		TreeSet<Integer> orderedPositiveInt = new TreeSet<Integer>();
 
-		for (int i = 1; i <= N; i++) {
-			if (!found[i]) {
-				result = i;
-				break;
+		for (int i = 0; i < A.length; i++) {
+			if (A[i] > 0) {
+				orderedPositiveInt.add(A[i]);
 			}
 		}
-		
-		// if no gaps were found, result is N+1
-		if (result == -1) {
-			result = N + 1;
+
+		// if there are no positive values, 1 is the answer
+		if (orderedPositiveInt.isEmpty()) {
+			result = 1;
+		} else
+		// if there are, the first positive number should always be 1
+		// (requirement)
+		if (orderedPositiveInt.first() != 1) {
+			result = 1;
+		} else {
+			int previousNumber = 1;
+			boolean found = false;
+			for (Integer i : orderedPositiveInt) {
+				// if a gap was found, return the gap value
+				if (i != previousNumber && i > previousNumber + 1) {
+					result = previousNumber + 1;
+					found = true;
+					break;
+				}
+
+				previousNumber = i;
+			}
+
+			// in case the array contains all numbers in order (no gaps), the
+			// result is the last positive+1
+			if (!found)
+				result = previousNumber + 1;
 		}
 		
 		System.out.println(arrayStr + " => " + result);
@@ -71,8 +82,9 @@ public class MissingInteger {
 	}
 	
 	public static void main(String[] args) {
-		MissingInteger mi = new MissingInteger();
+		MissingIntegerONlogN mi = new MissingIntegerONlogN();
 		
+		mi.solution(new int[]{});
 		mi.solution(new int[]{-12});
 		mi.solution(new int[]{0});
 		mi.solution(new int[]{1});
