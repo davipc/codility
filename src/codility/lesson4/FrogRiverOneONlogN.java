@@ -61,48 +61,27 @@ Elements of input arrays can be modified.
  * @author Davi
  *
  */
-public class FrogRiverOne {
+public class FrogRiverOneONlogN {
 
 
     public int solution(int X, int[] A) {
         int result = -1;
-
-        int N = A.length;
         
-        boolean[] found = new boolean[X+1];
+        Set<Integer> s = new TreeSet<Integer>();
         
-        long sumPositions = (long)X*((long)X+1)/2;
+        for (int i = 1; i <= X; i++) {
+            s.add(i);
+        }
         
-        // for each new number found (not marked on found arr), remove from sumPositions
-        // when sumPositions get to 0 all numbers have been found
-        for (int i = 0; i < N; i++) {
-            if (!found[A[i]]) {
-            	found[A[i]] = true;
-            	sumPositions -= A[i];
-            	if (sumPositions == 0) {
-            		result = i;
-            		break;
-            	}
+        for (int i = 0; i < A.length; i++) {
+            s.remove(A[i]);
+            
+            if (s.isEmpty()) {
+                result = i;
+                break;
             }
         }
         
-        System.out.println(X + ", " + Arrays.toString(A) + " => " + result);
-        
         return result;
     }
-    
-    public static void main(String[] args) {
-		FrogRiverOne one = new FrogRiverOne();
-
-		one.solution(1, new int[]{1});
-		one.solution(2, new int[]{1,1,1,1,1,1,1,1,1});
-		one.solution(2, new int[]{2,1});
-		one.solution(2, new int[]{2,2,2,2,2,2,1});
-		one.solution(2, new int[]{1,2});
-		one.solution(2, new int[]{1,1,1,1,1,1,1,2});
-		one.solution(5, new int[]{1,3,1,4,2,3,5,4});
-		one.solution(5, new int[]{1,2,3,4,5,4});
-		
-	}
-    
 }

@@ -58,47 +58,32 @@ Elements of input arrays can be modified.
  *
  */
 
-public class PermCheck {
+public class PermCheckONlogN {
 	// you can also use imports, for example:
 
 	public int solution(int[] A) {
 		int result = 1;
 
-		int N = A.length;
-		
         String arrayStr = Arrays.toString(A);
+		
+		Arrays.sort(A);
 
-        boolean[] found = new boolean[N+1];
-        
-        // mark the elements found
-		for (int i = 0; i < N; i++) {
-			// if number is outside the range, it's not a permutation
-			if (A[i] <= 0 || A[i] > N) {
+		for (int i = 0; i < A.length; i++) {
+			if (A[i] != i + 1) {
 				result = 0;
 				break;
 			}
-			
-			found[A[i]] = true;
 		}
 
-		// if no odd elements were found, check the array of found numbers
-		if (result == 1) {
-			for (int i = 1; i <= N; i++) {
-				if (!found[i]) {
-					result = 0;
-					break;
-				}
-			}
-		}
-		
-		System.out.println(arrayStr + " => " + result);
+        System.out.println(arrayStr + " => " + result);
 		
 		return result;
 	}
 	
     public static void main(String[] args) {
-		PermCheck pc = new PermCheck();
+		PermCheckONlogN pc = new PermCheckONlogN();
 		
+		pc.solution(new int[]{});
 		pc.solution(new int[]{2});
 		pc.solution(new int[]{2,1});
 		pc.solution(new int[]{4,3,2});
