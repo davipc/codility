@@ -42,4 +42,18 @@ ignore file				[create ignore file and add to it]
 						[if files were already loaded into the repository - for instance, .class files - need to manually stop tracking them]
 						git rm -r --cached <filename or format, for instance *.class>
 						
-		
+create branch			git checkout -b <branch name>
+
+point to another branch	git checkout <branch name>
+
+list branches			git branch -v
+
+push branch	to remote	git push -u origin <branch name>
+
+merge changes			go into github
+						create a pull request
+						merge (if no conflicts)
+
+
+
+
